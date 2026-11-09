@@ -1,26 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "env": {
+    "PORT": "3000"
+  },
   "services": {
     "web": {
-      "root": ".",
+      "root": "tools/vercel-oidc-probe",
       "runtime": "container",
-      "entrypoint": "packages/twenty-docker/twenty/Dockerfile#twenty"
-    }
-  },
-  "daemons": {
-    "worker": {
-      "root": ".",
-      "entrypoint": "packages/twenty-docker/twenty/Dockerfile#twenty-server",
-      "command": ["node", "dist/queue-worker/queue-worker"],
-      "instances": {
-        "hnd1": 0
-      },
-      "resources": {
-        "requests": {
-          "memory": "2Gi"
-        }
-      },
-      "terminationGracePeriodSeconds": 360
+      "entrypoint": "Dockerfile"
     }
   },
   "rewrites": [
